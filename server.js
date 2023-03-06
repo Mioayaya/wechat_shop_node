@@ -7,6 +7,9 @@ app.get("/",(req,res) => {
   res.send("hello express");
 })
 
+// 配置post解析
+app.use(express.json);
+
 app.use("/api/user",Users);
 
 app.listen(5000,() => {
