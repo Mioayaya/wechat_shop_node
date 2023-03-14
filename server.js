@@ -8,7 +8,7 @@ app.get("/",(req,res) => {
 })
 
 // 配置post解析
-app.use(express.json);
+app.use(express.json());
 
 app.use("/api/user",Users);
 
