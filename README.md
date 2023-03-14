@@ -21,10 +21,19 @@
   "name": "用户昵称",
   "email": "用户邮箱",
   "password": "用户密码", 
-  "avatar": "头像url" // 默认 https://cdn.luogu.com.cn/upload/usericon/1.png
+  "avatar": "头像url" 
 }
+```
+```js
+// 头像默认 https://cdn.luogu.com.cn/upload/usericon/1.png
 ```
 
 ### 127.0.0.1:5000/api/user/login
 - 登录接口
 - 请求方式 post
+```json
+{
+  "email": "用户邮箱",
+  "password": "用户密码"
+}
+```
