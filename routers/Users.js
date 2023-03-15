@@ -47,8 +47,7 @@ router.post("/login",(req,res) => {
     if(user) {
     // 查到用户
       if(bcrypt.compareSync(req.body.password,user.password)){
-        res.send(user);
-        res.send("登录成功");
+        res.send("登录成功");        
       }else{
         res.send("--密码错误--");
       }
