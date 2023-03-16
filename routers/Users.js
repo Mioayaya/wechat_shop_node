@@ -28,13 +28,13 @@ router.post("/register",(req,res) => {
         // 加密后的内容
         userData.password = hash;
         Users.create(userData).then(user => {
-          res.json({status: user.email + "注册成功!"})
-        }).catch(err => res.send("error: " + err))
+          res.send({isSuccess: true,msg: '注册成功!'});
+        }).catch(err => res.send({isSuccess: false,msg: '注册失败',err}))
       })    
     }else {
-      res.json({status: "该邮箱已经注册过了~"});
+      res.send({isSuccess: false,msg: '该邮箱已经注册过了~'});      
     }
-  }).catch(err => res.send("error: " + err));
+  }).catch(err => res.send({isSuccess: false,msg: '注册失败',err}));
 })
 
 // 登录接口
@@ -47,12 +47,12 @@ router.post("/login",(req,res) => {
     if(user) {
     // 查到用户
       if(bcrypt.compareSync(req.body.password,user.password)){
-        res.send("登录成功");        
+        res.send({isSuccess: true,userData:user,msg:'登录成功'});
       }else{
-        res.send("--密码错误--");
+        res.send({isSuccess: false,msg:'密码错误'});
       }
     }else {
-      res.status(400).json({error: "用户不存在"})
+      res.send({isSuccess: false,msg:'用户不存在'});      
     }
   }).catch(err => res.send("error: " + err));
 })
