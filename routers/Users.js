@@ -57,4 +57,20 @@ router.post("/login",(req,res) => {
   }).catch(err => res.send("error: " + err));
 })
 
+// 返回用户信息接口
+router.get("/infor",(req,res) => {  
+  const { uid } = req.query;
+  Users.findOne({
+    where: {uid}
+  }).then((user) => {
+    if(user) {
+      const userData = user;
+      delete userData.dataValues.password;      
+      res.send({userData});
+    }else {
+      res.send({userData:null,err:'用户不存在'});
+    }
+  }).catch(err => res.send({err}));
+})
+
 module.exports = router;
