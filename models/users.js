@@ -35,6 +35,12 @@ module.exports = db.sequelize.define(
     },
     shop_id: {
       type: Sequelize.INTEGER
+    },
+    money: {
+      type: Sequelize.DOUBLE
+    },
+    inb: {
+      type: Sequelize.INTEGER
     }
   }, {
     timestamps: false
