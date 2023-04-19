@@ -16,14 +16,15 @@
 ### 127.0.0.1:5000/api/user/register
 - 注册接口 使用post传递  
 - 请求方式 post
-```json
-{
-  "name": "用户昵称",
-  "email": "用户邮箱",
-  "password": "用户密码", 
-  "avatar": "头像url" 
-}
-```
+- body 内容
+  ```json
+  {
+    "name": "",
+    "email": "",
+    "password": "",
+  }
+  ``` 
+
 ```js
 // 头像默认 https://cdn.luogu.com.cn/upload/usericon/1.png
 ```
@@ -31,12 +32,13 @@
 ### 127.0.0.1:5000/api/user/login
 - 登录接口
 - 请求方式 post
-```json
-{
-  "email": "用户邮箱",
-  "password": "用户密码"
-}
-```
+- body 内容
+  ```json
+  {
+    "email": "用户邮箱",
+    "password": "用户密码"
+  }
+  ```
 
 ### 127.0.0.1:5000/api/user/infor?uid=
 - 获取用户信息
@@ -54,6 +56,31 @@
     "follow_shops": 0,
     "fans": 0,
     "shop_id": 1000000
+  }
+}
+```
+
+
+## Shops 
+- header: shop
+### 127.0.0.1:5000/api/shop/search
+- 请求方式 post
+- body
+  ```json
+  {
+    "id": "",
+    "name": ""
+  }
+  ```
+测试接口 返回
+```json
+{
+  "shop": {
+    "shop_fans": "0",
+    "shop_id": "1000000",
+    "shop_name": "YBB小店",
+    "shop_sign": "will come shinning through",
+    "uid": "10000000"
   }
 }
 ```

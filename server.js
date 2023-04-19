@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 const Users = require("./routers/Users");
+const Shops = require("./routers/Shops");
 
 // 设置跨域访问
 app.all("*",function(req,res,next){
@@ -25,6 +26,7 @@ app.get("/",(req,res) => {
 app.use(express.json());
 
 app.use("/api/user",Users);
+app.use("/api/shop",Shops);
 
 app.listen(5000,() => {
   console.log("Server is running on port 5000···");
