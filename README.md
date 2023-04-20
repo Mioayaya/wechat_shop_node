@@ -84,3 +84,11 @@
   }
 }
 ```
+
+
+# commodities
+- header: commodities
+
+## 127.0.0.1:5000/api/commodities/home
+- 请求方式get
+- 返回首页商品列表
