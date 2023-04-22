@@ -21,6 +21,9 @@ module.exports = db.sequelize.define(
     details_img_src: {
       type: Sequelize.STRING
     },
+    details_txt: {
+      type: Sequelize.STRING
+    },
     commodity_name: {
       type: Sequelize.STRING
     },
