@@ -39,6 +39,7 @@ router.get("/test",async (req,res) => {
       attributes: { exclude: ['id'] },
       where: {shop_id:shop.shop_id}
     })
+        
     res.send({commoditityList})
   } catch(e) {
     res.send({err:e})

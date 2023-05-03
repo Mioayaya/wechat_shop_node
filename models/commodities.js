@@ -27,6 +27,12 @@ module.exports = db.sequelize.define(
     commodity_name: {
       type: Sequelize.STRING
     },
+    commodity_canshu: {
+      type: Sequelize.STRING
+    },
+    commodity_guige: {
+      type: Sequelize.STRING
+    },
     commodity_price: {
       type: Sequelize.DOUBLE
     },

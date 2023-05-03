@@ -73,4 +73,22 @@ router.get("/infor",(req,res) => {
   }).catch(err => res.send({err}));
 })
 
+// recharge
+router.post("/recharge",async (req,res) => {
+  try {
+    const { uid,money } = req.body;
+    const user = await Users.findOne({
+      where: {uid}
+    })
+    await Users.update({
+      money: user.money + money,
+    }, { 
+      where: { uid }
+    })
+    res.send({msg:'充值成功'})
+  } catch(err) {
+    res.send({msg:'充值失败'},err)
+  }
+})
+
 module.exports = router;
