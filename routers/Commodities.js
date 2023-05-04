@@ -27,6 +27,26 @@ router.get("/home",async (req,res) => {
 
 })
 
+// 根据id搜索商品信息
+router.get("/search",async (req,res) => {
+  try {    
+    const { commodityid } = req.query;    
+    const commodity = await Commodities.findOne({
+      attributes: { exclude: ['id']},
+      where: { commodity_id: commodityid }
+    })    
+    if(commodity.content_img_src) {
+      commodity.content_img_src = commodity.content_img_src.split('#');
+    }
+    if(commodity.details_img_src) {
+      commodity.details_img_src = commodity.details_img_src.split('#');
+    }    
+    res.send({msg:'sucess',commodity});
+  } catch(e) {
+    res.send({e})
+  }
+})
+
 router.get("/test",async (req,res) => {
   try {
     // 商店id

@@ -20,6 +20,9 @@ module.exports = db.sequelize.define(
     },
     shop_fans: {
       type: Sequelize.STRING,
+    },
+    shop_avatar: {
+      type: Sequelize.STRING
     }
   }, {
     timestamps: false
