@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Shops = require("../models/shops");
+const Commodities = require("../models/commodities");
 
 // 查询店铺信息，id、name都可以
 router.post("/search",(req,res) => {
@@ -43,6 +44,37 @@ router.post("/search",(req,res) => {
         })
       }
     }).catch(err => res.send({isSuccess: false,err}))
+  }
+})
+
+// 根据店铺id返回所有商品
+router.get("/getcommodities",async (req,res) => {
+  try {
+    const { shopId } = req.query;
+    const shopData = await Shops.findOne({
+      where: {shop_id: shopId}
+    })
+    const commodities = await Commodities.findAll({
+      attributes: { exclude: ['id']},
+      where: { shop_id: shopId}
+    })
+    const commoditiesL = [];
+    const commoditiesR = [];
+
+  for (let i = 0; i < commodities.length; i++) {
+    if(commodities[i].content_img_src) {
+      commodities[i].content_img_src = commodities[i].content_img_src.split('#');
+    }
+    if(commodities[i].details_img_src) {
+      commodities[i].details_img_src = commodities[i].details_img_src.split('#');
+    }
+
+    i%2===0?commoditiesL.push(commodities[i]):commoditiesR.push(commodities[i]);
+  }
+
+  res.send({commoditiesL,commoditiesR,shopData});  
+  } catch (err) {
+    console.log({err});
   }
 })
 
