@@ -48,6 +48,9 @@ router.get("/getall",async (req,res) => {
     })
     let historyList = historys.sort((a,b) => b.time - a.time);
     const time = new Date();
+    const Ty = time.getFullYear();
+    const Tm = time.getMonth()+1;
+    const Td = time.getDay();
     // 对时间格式化
     for(let i=0;i<historyList.length;i++) {
       const itime = new Date(Number(historyList[i].time));
@@ -63,13 +66,16 @@ router.get("/getall",async (req,res) => {
       s = s>10?s:`0${s}`;
       const lastTime = `${h}:${min}:${s}`;
       /******************************/
-      if(time-itime<1000*60*60*24) {
-        historyList[i].time = `今天 ${lastTime}`;
-      }else if(time-itime<1000*60*60*48) {
-        historyList[i].time = `昨天 ${lastTime}`;
-      }else {
+      if(Ty === y && Tm === m ) {
+        if(Td === d) {
+          historyList[i].time = `今天 ${lastTime}`;
+        }else if(Td - d === 1) {
+          historyList[i].time = `昨天 ${lastTime}`;  
+        }
+      } else {
         historyList[i].time = `${y}-${m}-${d} ${lastTime}`;
-      }      
+      }
+            
       const { cover_img_src,commodity_name,commodity_price } = await Commodiyies.findOne({
         attributes: { exclude: ['id']},
         where: {commodity_id: historyList[i].commodity_id}
