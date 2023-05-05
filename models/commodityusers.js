@@ -17,6 +17,9 @@ module.exports = db.sequelize.define(
     },
     shoucang: {
       type: Sequelize.INTEGER,
+    },
+    time: {
+      type: Sequelize.STRING,
     }
   }, {
     timestamps: false
