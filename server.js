@@ -9,7 +9,6 @@ const Historys = require("./routers/Historys");
 const Orders = require("./routers/Orders");
 const Chats = require("./routers/Chats");
 
-
 // 设置跨域访问
 app.all("*",function(req,res,next){
   //设置允许跨域的域名，*代表允许任意域名跨域
@@ -38,6 +37,7 @@ app.use("/api/commodityusers",CommodityUsers);
 app.use("/api/history",Historys);
 app.use("/api/order",Orders);
 app.use("/api/chat",Chats);
+
 
 app.listen(5000,() => {
   console.log("Server is running on port 5000···");

@@ -6,26 +6,29 @@ module.exports = db.sequelize.define(
   {
     chat_id: {
       type: Sequelize.INTEGER,
-      primaryKet: true,
+      primaryKey: true,
       autoIncreament: true,
     },
     you_id: {
       type: Sequelize.INTEGER
     },
+    you_avatar: {
+      type: Sequelize.STRING
+    },
     uid: {
       type: Sequelize.INTEGER
+    },
+    uid_avatar: {
+      type: Sequelize.STRING
     },
     chats: {
       type: Sequelize.STRING
     },
     time: {
       type: Sequelize.STRING
-    },
-    you_uid: {
-      type: Sequelize.STRING
     }
   }, {
-    timestamps: false
+    timestamps: false,    
   }, {
     define: {
       freezeTableName: true
