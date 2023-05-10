@@ -8,6 +8,7 @@ const CommodityUsers = require("./routers/CommodityUsers");
 const Historys = require("./routers/Historys");
 const Orders = require("./routers/Orders");
 const Chats = require("./routers/Chats");
+const Upimg = require("./routers//Upimg");
 
 // 设置跨域访问
 app.all("*",function(req,res,next){
@@ -37,6 +38,7 @@ app.use("/api/commodityusers",CommodityUsers);
 app.use("/api/history",Historys);
 app.use("/api/order",Orders);
 app.use("/api/chat",Chats);
+app.use("/api/img",Upimg);
 
 
 app.listen(5000,() => {

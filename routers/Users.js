@@ -91,4 +91,28 @@ router.post("/recharge",async (req,res) => {
   }
 })
 
+// 返回所有用户信息
+router.get("/getall",async (req,res) => {
+  try {
+    const userList = await Users.findAll({
+      attributes: { exclude: ['id']},
+    })
+    res.send({userList});
+  }catch {
+    res.send({err:'error someting was wrong T_T'})
+  }
+})
+
+router.get("/search",async (req,res) => {
+  try {
+    const { uid } = req.query;
+    const userData = await Users.findOne({
+      where: {uid}
+    })
+    res.send({userData});
+  } catch {
+    res.send({err:'error someting was wrong T_T'});
+  }
+})
+
 module.exports = router;
