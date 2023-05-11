@@ -70,7 +70,10 @@ const getOrderList = async (uid) => {
     attributes: { exclude: ['id'] },
     where: {
       uid,        
-    }
+    },
+    order: [
+      ['time','DESC']
+    ]
   })
           
   const result = [];
@@ -84,7 +87,8 @@ const getOrderList = async (uid) => {
     const itime = new Date(Number(orderList[i].time));
     const y = itime.getFullYear();
     const m = itime.getMonth()+1;
-    const d = itime.getDay();      
+    // const d = itime.getDay();
+    const d = itime.getDate();
     let h = itime.getHours();
     let min = itime.getMinutes();
     let s = itime.getSeconds();
